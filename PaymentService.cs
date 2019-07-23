@@ -11,7 +11,16 @@ namespace App.Services
 
         public Payment Create(double amount, string description)
         {
+            var payment = new Payment{
+                Amount = amount,
+                Currency = description
+            };
 
+            db.Payments.Add(payment);
+
+            db.SaveChanges();
+
+            return Payment;
         }
 
     }
