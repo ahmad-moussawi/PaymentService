@@ -4,16 +4,19 @@ namespace App.Services
     {
 
         private readonly AppDbContext db;
-        public PaymentService(AppDbContext db)
+        private readonly BaseCurrencyProvider baseCurrencyProvider;
+        public PaymentService(AppDbContext db, BaseCurrencyProvider baseCurrencyProvider)
         {
             this.db = db;
+            this.baseCurrencyProvider = baseCurrencyProvider;
         }
 
         public Payment Create(double amount, string description)
         {
             var payment = new Payment{
                 Amount = amount,
-                Currency = description
+                Desctiption = description,
+                Currency = baseCurrencyProvider.Get(),
             };
 
             db.Payments.Add(payment);
