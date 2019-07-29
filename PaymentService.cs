@@ -24,6 +24,7 @@ namespace App.Services
             }
 
             var payment = new Payment{
+                Id = 1,
                 Amount = amount,
                 Desctiption = description,
                 Currency = baseCurrencyProvider.Get(),
