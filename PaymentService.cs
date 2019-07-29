@@ -17,6 +17,7 @@ namespace App.Services
 
         public Payment Create(double amount, string description)
         {
+            // Check for multiapproval
             if(! this.multiapproval.CanCreate<Payment>())
             {
                 throw new InvalidOperationException("You can't create a payment");
